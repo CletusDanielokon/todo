@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>To-Do Login</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="login-container">
+    <img src="do.webp" alt="To-Do Icon" class="login-icon" />
+    <h1>WELCOME</h1>
+    <p>Login to manage your tasks</p>
+
+    <form class="login-form" onsubmit="event.preventDefault(); window.location.href='todo.html';">
+      
+        <input type="email" placeholder="Email" required />
+      <input type="password" placeholder="Password" required />
+      <button type="submit">Login</button>
+
+    </form>
+
+      <p>Don't have an account? 
+        <a href ="signup.html">Sign up here</a>
+      </p>
+  </div>
+</body>
+</html>
