@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add Task</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+<body>
+  <main>
+    <h1>Add New Task</h1>
+    <section class="add-task-inline">
+      <form id="taskForm" class="task-form">
+        <input type="text" id="taskText" placeholder="What do you want to do?" required />
+        <input type="date" id="taskDate" required />
+        <input type="time" id="taskTime" required />
+        <button type="submit"><i class="fa-solid fa-plus"></i> Add Task</button>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('taskForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const task = document.getElementById('taskText').value.trim();
+        const date = document.getElementById('taskDate').value;
+        const time = document.getElementById('taskTime').value;
+
+        if (!task || !date || !time) {
+          alert("Please fill in all fields");
+          return;
+        }
+
+        const taskObj = {
+          text: task,
+          due: `${date}T${time}`,
+          completed: false
+        };
+
+        const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        savedTasks.push(taskObj);
+        localStorage.setItem('tasks', JSON.stringify(savedTasks));
+
+        // ✅ Now redirect
+        window.location.href = 'todo.html';
+      });
+    });
+  </script>
+</body>
+</html>
